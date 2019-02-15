@@ -3,14 +3,19 @@ var db = firebase.database();
 
 // Formats date to structure and organize object
 var dt = new Date();
-var day = dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate();
-var time = dt.getHours() + "/" + dt.getMinutes();
-
+var day, day2, time;
+function updateDate() {
+    day = String(dt.getFullYear()) + String((dt.getMonth() + 1)) + String(dt.getDate());
+    day2 = dt.getFullYear() + ":" + (dt.getMonth() + 1) + ":" + dt.getDate();
+}
 // Log submission
 function submitForm(information) {
-    db.ref(day + "/logs/" + time).set({
+    db.ref("/logs/" + day).push({
         info: information,
-        time: Date($.now())
+        date: {
+            fullDate: Date($.now()),
+            day: day2
+        }
     }, function (error) {
         if (error) {
             console.log("failed")
@@ -95,6 +100,7 @@ function grabInfo() {
 // Load jQuery
 $(document).ready(function () {
     $("#submit").click(function () {
-        submitForm(grabInfo())
+        updateDate();
+        submitForm(grabInfo());
     })
 });

@@ -3,14 +3,17 @@ var db = firebase.database();
 
 // Formats date to structure and organize object
 var dt = new Date();
-var day = dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate();
-var time = dt.getHours() + "/" + dt.getMinutes() + "/" + dt.getSeconds();
+day = String(dt.getFullYear()) + String((dt.getMonth() + 1)) + String(dt.getDate());
+day2 = dt.getFullYear() + ":" + (dt.getMonth() + 1) + ":" + dt.getDate();
 
 // Define function to submit to Firebase
-function submitForm(submission, day) {
-    db.ref(day + "/visitors/" + time).set({
+function submitForm(submission) {
+    db.ref("/visitors/" + day).set({
         visitor: submission,
-        date: Date($.now())
+        date: {
+            fullDate: Date($.now()),
+            day: day2
+        }
     }, function (error) {
         if (error) {
             console.log("failed")

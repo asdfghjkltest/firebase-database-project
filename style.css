@@ -11,6 +11,10 @@
     display: none;
     margin-left: 1rem;
 }
+#positionTopRight {
+    top: 20px;
+    right: 20px;
+}
 button {
     margin-left: 45%;
 }

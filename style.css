@@ -1,0 +1,16 @@
+#carousel {
+    position: fixed;
+    right: 33%;
+    bottom: 0%;
+}
+.carousel {
+    width:640px;
+    height:360px;
+  }
+#confirmation {
+    display: none;
+    margin-left: 1rem;
+}
+button {
+    margin-left: 45%;
+}

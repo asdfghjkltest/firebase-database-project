@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Linking jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyB4Ooeb3AO3GUZ0PlheNtyy2jhedAaIuIQ",
+            authDomain: "firstproject-vqv.firebaseapp.com",
+            databaseURL: "https://firstproject-vqv.firebaseio.com",
+            projectId: "firstproject-vqv",
+            storageBucket: "firstproject-vqv.appspot.com",
+            messagingSenderId: "578400054546",
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="logs.js"></script>
+
+    <title>SMS Datacenter</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="card" style="width: 100%;">
+                <div class="card-header">
+                    NOC Name:
+                    <select class="custom-select" id="nocName">
+                        <option selected>Find your Name</option>
+                        <option value="Martin">Martin</option>
+                        <option value="Tracy">Tracy</option>
+                        <option value="Anh">Anh</option>
+                        <option value="Viet">Viet</option>
+                        <option value="Kiersten">Kiersten</option>
+                        <option value="Preston">Preston</option>
+                    </select>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac1" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp1" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid1" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac2" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp2" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid2" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac3" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp3" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid3" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac4" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp4" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid4" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac5" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp5" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid5" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="crac6" placeholder="Crac#">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="temp6" placeholder="Temp°F">
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="humid6" placeholder="Humidity%">
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Notes</span>
+                    </div>
+                    <textarea id="notes" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="col-4"></div>
+            <a href="#" id="submit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+
+</html>

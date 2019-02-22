@@ -5,16 +5,20 @@ var db = firebase.database();
 var dt = new Date();
 var day, day2, time;
 function updateDate() {
-    day = String(dt.getFullYear()) + String((dt.getMonth() + 1)) + String(dt.getDate());
-    day2 = dt.getFullYear() + ":" + (dt.getMonth() + 1) + ":" + dt.getDate();
+    // day = String(dt.getFullYear()) + String((dt.getMonth() + 1)) + String(dt.getDate());
+    day2 = dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate();
+    day3 = dt.getFullYear() + ":" + (dt.getMonth() + 1) + ":" + dt.getDate();
+    time = dt.getHours() + ":" + dt.getMinutes();
 }
+
 // Log submission
 function submitForm(information) {
-    db.ref("/logs/" + day).push({
+    db.ref("/logs/" + day2).push({
         info: information,
         date: {
             fullDate: Date($.now()),
-            day: day2
+            day: day3,
+            time: time
         }
     }, function (error) {
         if (error) {
@@ -47,10 +51,6 @@ function clear() {
 function grabInfo() {
     var name = $("#nocName").val();
     var note = $("#notes").val();
-    var logInfo = {
-        noc: name,
-        notes: note
-    };
     var crac1 = $("#crac1").val();
     var crac2 = $("#crac2").val();
     var crac3 = $("#crac3").val();
@@ -69,6 +69,11 @@ function grabInfo() {
     var humid4 = $("#humid4").val();
     var humid5 = $("#humid5").val();
     var humid6 = $("#humid6").val();
+    var logInfo = {
+        noc: name,
+        notes: note,
+        cracList: [crac1, crac2, crac3, crac4, crac5, crac6]
+    };
     logInfo[crac1] = {
         tempFarenheit: temp1,
         humidPercent: humid1
@@ -97,7 +102,7 @@ function grabInfo() {
     return logInfo;
 };
 
-// Load jQuery
+// Load jQuery and wait for button press
 $(document).ready(function () {
     $("#submit").click(function () {
         updateDate();
